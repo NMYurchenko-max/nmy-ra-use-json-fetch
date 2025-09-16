@@ -10,8 +10,16 @@ export default defineConfig(({ mode }) => ({
   server: {
     port: 5173,
     proxy: {
-      // Только для dev: перенаправляет /notes на локальный бэкенд
-      '/notes': {
+      // Только для dev: перенаправляет API запросы на локальный бэкенд
+      '/data': {
+        target: 'http://localhost:7070',
+        changeOrigin: true,
+      },
+      '/error': {
+        target: 'http://localhost:7070',
+        changeOrigin: true,
+      },
+      '/loading': {
         target: 'http://localhost:7070',
         changeOrigin: true,
       },
